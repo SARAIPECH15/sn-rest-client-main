@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../../views/templates/head')-%>
+
+
+    <body>
+        <section class="bg-light py-3" style="background-image: url('assets/image/pattern-shapes.png');">
+            <div class="container px-2">
+                <div class="row gx-5 mb-4">
+                    <div class="col-md-5 text-center">
+                        <div class="col-lg-5 ">
+                            <img src="../../assets/image/register.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="card post-preview post-preview-featured lift mb-3 overflow-hidden ">
+                            <h5 class="card-header card-title text-center">Registro</h5>
+                            <div class="card-body">
+                                <form method="POST" action="/register" class="needs-validation" novalidate>
+                                    <div class="form-group  mb-4">
+                                        <input class="form-control input-group has-validation py-3" id="inputName"
+                                            type="name" name="fullName" placeholder="Nombre completo" required
+                                            autocomplete="fullName" autofocus>
+                                    </div>
+                                    <div class="row gx-5 mb-3">
+                                        <div class="col-md-6">
+                                            <input class="form-control" id="inputBirthday" type="date"
+                                                name="birthday" placeholder="Fecha de Nacimiento" required>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <input class="form-control" id="inputPhone" type="tel" name="phone"
+                                                pattern="\d*" maxlength="10" minlength="10" placeholder="Teléfono"
+                                                required>
+                                               
+                                        </div>
+
+                                    </div>
+                                    <div class="row gx-5 mb-3 type-user" required>
+                                        <div class="col-md-4">
+                                            <select class="form-select " id="inputTypeUser" name="role">
+                                                <option value="1">Lector</option>
+                                                <option value="2">Autor/Escritor</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-8  hidingForms">
+                                            <input class="form-control" id="inputPerfil" type="url" name="academyProfile"
+                                                placeholder="Link que acreditación" value="http://www.w3.org/2000/svg">
+                                        </div>
+
+                                    </div>
+                                    <hr class="my-3">
+                                    <div class="form-group mb-3">
+                                        <input class="form-control py-3" id="inputEmail" type="email"
+                                            placeholder="Correo electronico" name="email" required>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <input class="form-control py-3" id="inputPassWord" type="password"
+                                            placeholder="Contraseña" minlength="8" name="password" required>
+                                        <div class="invalid-feedback">
+                                            La contraseña debe contener mínimo 8 caracteres
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <input class="form-control py-3" id="inputPassWord" type="text"
+                                            placeholder="¿Cuál es el nombre de tu primera mascota?" name="answer" required>
+                                    </div>
+
+
+                                    <% if(message != undefined){ %>
+                                        <p href="#"><%= message %></p>
+                                      <% } %>
+                                    <div class="row gx-3 mb-3">
+                                        <div class="col-md-6"></div>
+                                        <div class="col-md-6 text-end">
+                                            <p>¿Ya tienes cuenta? <a class="text-red" href="/login">
+                                                    Inicia Sesión</a>
+                                            </p>
+                                        </div>
+                                        <div class="text-center">
+                                            <button class="btn btn-primary mt-3" type="submit">Registrar</button>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+    <%- include('../../views/templates/need-validation')-%>
+        <script>
+
+            document.getElementById("inputTypeUser").onclick = function () {
+                var ddlTypeUser = document.getElementById("inputTypeUser");
+                var divinputUrlAcredit = document.getElementById("inputPerfil");
+                if (ddlTypeUser.value == '2') {
+                    divinputUrlAcredit.required = true;
+                    divinputUrlAcredit.style.display = 'block';
+
+                } else {
+                    divinputUrlAcredit.required = false;
+                    divinputUrlAcredit.style.display = 'none';
+                }
+            }
+
+        </script>
+
+</html>

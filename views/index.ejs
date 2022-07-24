@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<%- include('../views/templates/head')-%>
+
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navbar-->
+                    <%- include('../views/templates/nav.ejs')-%>
+
+                        <!-- Page Header-->
+                        <header class="page-header-ui page-header-ui-dark bg-img-cover overlay overlay-600"
+                            style="background-image: url(/assets/image/image-header.png)">
+
+                            <div class="page-header-ui-content position-relative">
+                                <div class="container px-5 text-center">
+                                    <div class="row gx-5 justify-content-center">
+                                        <div class="col-lg-8">
+                                            <h1 class="page-header-ui-title mb-3">Safo News</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="svg-border-rounded text-light">
+                                <!-- Rounded SVG Border-->
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34"
+                                    preserveAspectRatio="none" fill="currentColor">
+                                    <path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0">
+                                    </path>
+                                </svg>
+                            </div>
+                        </header>
+
+                        <section class="bg-light py-10">
+                            <div class="container px-5">
+                                <%if( news.length>0) {%>
+                                    <div class="row gx-5">
+                                        <%for( var i=0; i<news.length; i++) {%>
+                                            <div class="col-md-6 col-xl-4 mb-5">
+                                                <a class="card post-preview lift h-100" href="/post/<%=news[i]._id %>">
+                                                    <img class="card-img-top" src="<%=news[i].img %>" alt="...">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">
+                                                            <%=news[i].title %>
+                                                        </h5>
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <div class="post-preview-meta">
+                                                            <img class="post-preview-meta-img"
+                                                                src="../assets/image/user-woman.svg">
+                                                            <div class="post-preview-meta-details">
+                                                                <div class="post-preview-meta-details-name">
+                                                                    <%=news[i].user.fullName %>
+                                                                </div>
+                                                                <div class="post-preview-meta-details-date">
+                                                                    <%=news[i].formatDate('date') %>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <%}%>
+                                    </div>
+                            </div>
+
+                            <% }else{ %>
+                                <div class="row gx-5 px-10 justify-content-center">
+                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                        <strong>¡Hey!</strong> Estas buscando algún artículo en especifico, lamentablemente ahora no hay de esos, intnetalo de nuevo mas tarde.
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+
+                                    <img class="post-preview-meta-img " width="400" height="400"
+                                        src="../assets/image/alert-400.svg">
+                                </div>
+
+                                <% } %>
+
+                                    <div class="svg-border-rounded text-dark">
+                                        <!-- Rounded SVG Border-->
+
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34"
+                                            preserveAspectRatio="none" fill="#e81500">
+                                            <path
+                                                d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0">
+                                            </path>
+                                        </svg>
+                                    </div>
+                        </section>
+                </main>
+            </div>
+
+
+        </div>
+
+        <%- include('../views/templates/footer')-%>
+
+    </body>
+
+</html>
